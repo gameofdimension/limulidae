@@ -148,7 +148,8 @@ def main():
 
     def print_progress(study, trial):
         print(
-            f"Trial {trial.number:>6} | {trial.value:6.1f} TFLOPS @ {trial.params['M']}x{trial.params['N']}x{trial.params['K']:<20} | best: {study.best_value:6.1f} TFLOPS",
+            f"Trial {trial.number:>6} | {trial.value:6.1f} TFLOPS @ {trial.params['M']}x{
+                trial.params['N']}x{trial.params['K']:<20} | best: {study.best_value:6.1f} TFLOPS",
             end="\r",
         )
 
