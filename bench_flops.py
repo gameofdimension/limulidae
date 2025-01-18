@@ -102,6 +102,7 @@ def make_objective(
 
 
 def main():
+    dtype = sys.argv[1]
     m_range = [1024, 20480, 64]
     n_range = [1024, 20480, 64]
     k_range = [1024, 20480, 64]
@@ -110,7 +111,14 @@ def main():
     n_trials = 1000
     study_name = "benchmark_flops"
 
-    dtype = torch.bfloat16
+    if dtype == "fp32":
+        dtype = torch.float32
+    elif dtype == "fp16":
+        dtype = torch.float16
+    elif dtype == "bf16":
+        dtype = torch.bfloat16
+    else:
+        raise ValueError("dtype must be one of 'fp32', 'fp16', or 'bf16'")
     arch = get_accelerator_arch()
     device = arch.device()
 
