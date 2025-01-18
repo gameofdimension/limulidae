@@ -109,7 +109,6 @@ def main():
     num_iterations = 100
     num_warmup_iterations = 50
     n_trials = 1000
-    study_name = "benchmark_flops"
 
     if dtype == "fp32":
         dtype = torch.float32
@@ -119,6 +118,7 @@ def main():
         dtype = torch.bfloat16
     else:
         raise ValueError("dtype must be one of 'fp32', 'fp16', or 'bf16'")
+    study_name = f"{dtype}_benchmark_flops"
     arch = get_accelerator_arch()
     device = arch.device()
 
